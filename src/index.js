@@ -1,5 +1,6 @@
 // Create HTTP server.
 const restify = require("restify");
+const send = require("send");
 const { commandApp } = require("./internal/initialize");
 const { TeamsBot } = require("./teamsBot");
 
@@ -7,8 +8,21 @@ const { TeamsBot } = require("./teamsBot");
 // Create a restify server.
 const server = restify.createServer();
 server.use(restify.plugins.bodyParser());
+
+server.get(
+  "/static/*",
+  restify.plugins.serveStatic({
+    directory: __dirname,
+  })
+);
+
 server.listen(process.env.port || process.env.PORT || 3978, () => {
   console.log(`\nApp Started, ${server.name} listening to ${server.url}`);
+});
+
+// Setup the static tab
+server.get("/tab", (req, res, next) => {
+  send(req, __dirname + "/views/hello.html").pipe(res);
 });
 
 // Register an API endpoint with `restify`. Teams sends messages to your application
