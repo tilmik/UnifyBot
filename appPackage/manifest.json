@@ -52,7 +52,17 @@
     ],
     "composeExtensions": [],
     "configurableTabs": [],
-    "staticTabs": [],
+    "staticTabs": [
+        {
+            "entityId": "index0",
+            "name": "Personal Tab",
+            "contentUrl": "${{BOT_ENDPOINT}}/tab",
+            "websiteUrl": "${{BOT_ENDPOINT}}/tab",
+            "scopes": [
+                "personal"
+            ]
+        }
+    ],
     "permissions": [
         "identity",
         "messageTeamMembers"
