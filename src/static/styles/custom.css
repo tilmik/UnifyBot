@@ -14,6 +14,12 @@ body {
   display: none;
 }
 
-span p {
-  display: inline;
+.dark-mode {
+  background-color: charcoal;
+  color: white;
+}
+
+.contrast-mode {
+  background-color: black;
+  color: white;
 }
